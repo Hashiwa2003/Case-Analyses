@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Playoff Classification — Alex Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="nav-mark">alex<span>yang</span> / analytics</div>
+    <div class="nav-links">
+      <a href="index.html">← all case studies</a>
+      <a href="mailto:ajyang03@gmail.com">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="detail-header">
+  <div class="wrap">
+    <div class="tag-row">
+      <span class="tag">Classification</span>
+      <span class="tag">Support Vector Machines</span>
+      <span class="tag">Sports Analytics</span>
+    </div>
+    <h1>What separates a playoff team from the rest?</h1>
+    <p class="detail-meta">32 NFL teams · 2024 regular season · offensive &amp; defensive team statistics</p>
+  </div>
+</header>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Situation</span>
+    <h2>Coaches don't need a 6-dimensional model. They need to know what to practice.</h2>
+    <p>Using 2024 regular-season stats for all 32 NFL teams — field goals made, passing and rushing touchdowns, interceptions, forced fumbles, and sacks — I built classification models to predict which teams made the playoffs. The goal wasn't just accuracy: it was to turn the result into something a coaching staff could actually use, specifically for the Kansas City Chiefs.</p>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Complication</span>
+    <h2>A model that uses all six stats at once is accurate, but unreadable to a coach.</h2>
+    <p>I tested support vector machine classifiers across three kernels — linear, polynomial, and radial basis function (RBF) — tuned with 5-fold cross-validation. The RBF kernel had zero misclassifications on the training set. But a 6-dimensional decision boundary isn't something an offensive or defensive coordinator can visualize or act on. <strong>The technically best model was the least useful one to hand to a coach.</strong></p>
+    <div class="console" style="margin-top:20px;">
+      <span class="c-line"><span class="c-comment"># SVM kernel comparison (5-fold CV)</span></span>
+      <span class="c-line">linear (C=0.1):       1 misclassified</span>
+      <span class="c-line">polynomial (C=0.1, d=2): 1 misclassified</span>
+      <span class="c-line">RBF (C=10, gamma=0.01):  <span class="c-stat">0 misclassified</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Resolution</span>
+    <h2>I broke the model into two-variable views a coordinator could actually read.</h2>
+    <p>Instead of presenting the full 6-variable model, I built six separate two-variable linear-kernel comparisons — one set for offensive stats (paired combinations of field goals, passing TDs, rushing TDs), one for defensive stats (forced fumbles, interceptions, sacks) — and plotted the Chiefs against the rest of the league on each.</p>
+    <p>The pattern held across views: <strong>passing and rushing touchdowns separated playoff teams from non-playoff teams far better than field goals did</strong>, and on defense, <strong>interceptions and sacks were stronger separators than forced fumbles.</strong></p>
+    <div class="callout">
+      <span class="callout-label">So what</span>
+      <p>The Chiefs ranked below most playoff teams on rushing touchdowns, passing touchdowns, and interceptions in this dataset — giving the coaching staff three specific, data-backed areas to prioritize in practice, instead of a vague "improve overall offense" recommendation.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap download-row">
+  <a class="btn-primary" href="pdfs/nfl-playoff-classification-full.pdf" target="_blank">Download full analysis (PDF)</a>
+  <a class="btn-secondary" href="index.html">← Back to all case studies</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Alex Yang · Lawrence, KS</span>
+    <a href="mailto:ajyang03@gmail.com">ajyang03@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

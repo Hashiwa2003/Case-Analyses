@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seoul Bike Demand Forecasting — Alex Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="nav-mark">alex<span>yang</span> / analytics</div>
+    <div class="nav-links">
+      <a href="index.html">← all case studies</a>
+      <a href="mailto:ajyang03@gmail.com">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="detail-header">
+  <div class="wrap">
+    <div class="tag-row">
+      <span class="tag">Ensemble Methods</span>
+      <span class="tag">Bagging / Random Forest / Boosting</span>
+      <span class="tag">Operations</span>
+    </div>
+    <h1>When does a city actually need more bikes?</h1>
+    <p class="detail-meta">Seoul Bike Sharing System (UCI ML Repository) · summer season · hourly rentals</p>
+  </div>
+</header>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Situation</span>
+    <h2>Forecasting hourly bike-share demand from weather and time data.</h2>
+    <p>Using Seoul's public bike-share dataset, restricted to the summer season (its highest-demand period), I modeled the number of bikes rented per hour using eight predictor variables: hour of day, temperature, humidity, wind speed, visibility, dew point, solar radiation, and rainfall.</p>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Complication</span>
+    <h2>No single model is automatically the right one — so I compared three.</h2>
+    <p>After transforming the response variable (a square-root transformation produced the most normal distribution of the options tested), I built and tuned three tree-based ensemble models using 5-fold cross-validation: a bagged tree, a random forest, and a boosted tree.</p>
+    <div class="console" style="margin-top:20px;">
+      <span class="c-line"><span class="c-comment"># test-set mean squared error by model</span></span>
+      <span class="c-line">Bagged Tree:    <span class="c-stat">20.230</span>  (n_estimators=100)</span>
+      <span class="c-line">Random Forest:  22.906  (n_estimators=1000)</span>
+      <span class="c-line">Boosted Tree:   26.729  (n_estimators=1000, lr=0.1)</span>
+      <span class="c-line"><span class="c-prompt">&gt;</span> most important predictor: Hour</span>
+    </div>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Resolution</span>
+    <h2>The bagged tree generalized best — and the demand pattern was unambiguous.</h2>
+    <p>The bagged tree model had the lowest test-set error of the three and tracked actual rental counts most closely, especially around peak hours. Across all three models, hour of day was consistently the strongest predictor. A simplified decision tree made the pattern explicit: rentals spike around 8 AM and 6 PM, sunlight increases midday demand, and rainfall sharply suppresses rentals regardless of time of day.</p>
+    <div class="callout">
+      <span class="callout-label">So what</span>
+      <p>For a bike-share operator, this points to a concrete fleet-rebalancing rule: pre-position more bikes ahead of the two daily commute peaks, and scale back redistribution effort proactively on days with meaningful forecasted rainfall — rather than reacting to demand after it's already shifted.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap download-row">
+  <a class="btn-primary" href="pdfs/seoul-bike-demand-full.pdf" target="_blank">Download full analysis (PDF)</a>
+  <a class="btn-secondary" href="index.html">← Back to all case studies</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Alex Yang · Lawrence, KS</span>
+    <a href="mailto:ajyang03@gmail.com">ajyang03@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

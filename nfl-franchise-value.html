@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Franchise Value &amp; Social Following — Alex Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="nav-mark">alex<span>yang</span> / analytics</div>
+    <div class="nav-links">
+      <a href="index.html">← all case studies</a>
+      <a href="mailto:ajyang03@gmail.com">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="detail-header">
+  <div class="wrap">
+    <div class="tag-row">
+      <span class="tag">Linear Regression</span>
+      <span class="tag">Hypothesis Testing</span>
+      <span class="tag">Brand &amp; Valuation</span>
+    </div>
+    <h1>Does a bigger following mean a bigger valuation?</h1>
+    <p class="detail-meta">32 NFL teams · 2024 · franchise value vs. Facebook &amp; Twitter following</p>
+  </div>
+</header>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Situation</span>
+    <h2>Testing a common marketing assumption: does audience size predict value?</h2>
+    <p>Using 2024 data on all 32 NFL teams, I tested whether franchise value could be explained by social media following — comparing Facebook fan counts and Twitter follower counts as two separate predictors.</p>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Complication</span>
+    <h2>Both were statistically significant. Neither explained most of the variance.</h2>
+    <p>Both models passed their hypothesis tests (Facebook: p = 0.0003; Twitter: p = 0.007) and their residual diagnostics. But Facebook following explained only 35.4% of the variance in franchise value, and Twitter following explained just 21.5%. <strong>Statistical significance confirmed a real relationship — it didn't confirm a strong one.</strong></p>
+    <div class="console" style="margin-top:20px;">
+      <span class="c-line"><span class="c-comment"># model: franchise value ~ facebook fans</span></span>
+      <span class="c-line">FV = 4.439 + 0.448(fb_fans)</span>
+      <span class="c-line">p-value: <span class="c-stat">0.0003</span>   R&sup2;: <span class="c-stat">0.354</span></span>
+      <span class="c-line"><span class="c-comment"># model: franchise value ~ twitter followers</span></span>
+      <span class="c-line">FV = 4.376 + 0.618(tw_followers)</span>
+      <span class="c-line">p-value: <span class="c-stat">0.007</span>   R&sup2;: <span class="c-stat">0.215</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="scr-block">
+  <div class="wrap">
+    <span class="section-label">Resolution</span>
+    <h2>I picked the stronger model — then stress-tested it on a real team.</h2>
+    <p>Facebook following was the better predictor and the model I'd recommend between the two. To check whether "better" meant "reliable," I used the model to predict the Kansas City Chiefs' franchise value from their actual Facebook following, then compared it to their real 2024 valuation.</p>
+    <div class="callout">
+      <span class="callout-label">So what</span>
+      <p>The model predicted a franchise value of $5.74B for the Chiefs — their real value was $4.85B, a miss of roughly $890M. Reporting that gap matters more than the R² alone: a marketing or valuation team relying on this model would need other variables alongside social following, not in place of it. A model being "significant" doesn't mean it's "sufficient."</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap download-row">
+  <a class="btn-primary" href="pdfs/nfl-franchise-value-full.pdf" target="_blank">Download full analysis (PDF)</a>
+  <a class="btn-secondary" href="index.html">← Back to all case studies</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Alex Yang · Lawrence, KS</span>
+    <a href="mailto:ajyang03@gmail.com">ajyang03@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
