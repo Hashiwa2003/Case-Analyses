@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Yang — Business Analytics Portfolio</title>
+<meta name="description" content="Case studies in statistical modeling, classification, and predictive analytics by Alex Yang, Business Analytics, University of Kansas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="nav-mark">alex<span>yang</span> / analytics</div>
+    <div class="nav-links">
+      <a href="#case-studies">case studies</a>
+      <a href="https://github.com/" target="_blank" rel="noopener">github</a>
+      <a href="mailto:ajyang03@gmail.com">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap" style="display:grid; grid-template-columns: 1.15fr 1fr; gap:56px; align-items:center;">
+    <div>
+      <span class="hero-eyebrow">Business Analytics — University of Kansas</span>
+      <h1>I build models, then I check whether they should be trusted.</h1>
+      <p class="lede">Four case studies spanning regression, classification, and ensemble methods — each one answering a real question, with the model's limitations reported alongside its results.</p>
+      <div class="hero-links">
+        <a href="mailto:ajyang03@gmail.com">ajyang03@gmail.com</a>
+        <a href="https://linkedin.com/in/alexyang" target="_blank" rel="noopener">linkedin.com/in/alexyang</a>
+      </div>
+    </div>
+    <div class="console">
+      <span class="c-line"><span class="c-comment"># model: franchise value ~ social following</span></span>
+      <span class="c-line">FV = 4.439 + 0.448(fb_fans)</span>
+      <span class="c-line">p-value: <span class="c-stat">0.0003</span>  R&sup2;: <span class="c-stat">0.354</span></span>
+      <span class="c-line"><span class="c-comment"># predicted vs. actual (KC Chiefs)</span></span>
+      <span class="c-line">predicted: $5.74B   actual: $4.85B</span>
+      <span class="c-line"><span class="c-prompt">&gt;</span> model overestimates by <span class="c-stat">$890M</span></span>
+    </div>
+  </div>
+</header>
+
+<section class="case-section" id="case-studies">
+  <div class="wrap">
+    <span class="section-label">Case studies</span>
+    <div class="case-grid">
+
+      <a class="case-card" href="nfl-playoff-classification.html">
+        <span class="case-domain">Sports Analytics / Classification</span>
+        <h3>What separates a playoff team from the rest?</h3>
+        <p class="case-question">Classifying NFL playoff teams from regular-season stats, then translating the model into position-coach recommendations.</p>
+        <div class="case-stat-row">
+          <span class="case-stat-num">1</span>
+          <span class="case-stat-label">misclassification across<br>3 SVM kernels tested</span>
+        </div>
+        <span class="case-read">Read case study →</span>
+      </a>
+
+      <a class="case-card" href="ticket-pricing.html">
+        <span class="case-domain">Pricing / Regression Diagnostics</span>
+        <h3>A good R² isn't permission to deploy.</h3>
+        <p class="case-question">An 80%-fit ticket pricing model that fails its own diagnostic check — and the case for not shipping it anyway.</p>
+        <div class="case-stat-row">
+          <span class="case-stat-num">.804</span>
+          <span class="case-stat-label">adj. R&sup2; — and still<br>not deployed</span>
+        </div>
+        <span class="case-read">Read case study →</span>
+      </a>
+
+      <a class="case-card" href="seoul-bike-demand.html">
+        <span class="case-domain">Operations / Ensemble Methods</span>
+        <h3>When does a city actually need more bikes?</h3>
+        <p class="case-question">Comparing bagged trees, random forests, and boosting to forecast hourly bike-share demand in Seoul.</p>
+        <div class="case-stat-row">
+          <span class="case-stat-num">20.2</span>
+          <span class="case-stat-label">test MSE — lowest<br>of 3 models compared</span>
+        </div>
+        <span class="case-read">Read case study →</span>
+      </a>
+
+      <a class="case-card" href="nfl-franchise-value.html">
+        <span class="case-domain">Brand &amp; Valuation / Regression</span>
+        <h3>Does a bigger following mean a bigger valuation?</h3>
+        <p class="case-question">Testing whether social media following predicts NFL franchise value — then checking the model against a real team.</p>
+        <div class="case-stat-row">
+          <span class="case-stat-num">$890M</span>
+          <span class="case-stat-label">model's miss on the<br>Kansas City Chiefs</span>
+        </div>
+        <span class="case-read">Read case study →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Alex Yang · Lawrence, KS</span>
+    <a href="mailto:ajyang03@gmail.com">ajyang03@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
